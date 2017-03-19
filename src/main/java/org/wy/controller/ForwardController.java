@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -16,8 +19,11 @@ public class ForwardController {
     @Resource
     private JdbcTemplate jdbcTemplate;
     @RequestMapping("/login")
-    public String index(){
-        List list=jdbcTemplate.queryForList("SELECT * from user");
+    public String toLogin(HttpServletRequest request, HttpServletResponse response){
         return "login";
+    }
+    @RequestMapping("/index")
+    public String toIndex(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        return "index";
     }
 }

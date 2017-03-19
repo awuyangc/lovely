@@ -26,12 +26,10 @@
             <!--登录窗口-->
             <div class="maintitle"></div>
             <div class="subtitle">与他人分享你的知识、经验和见解</div>
-            <div style="display:inline-table">
-                <form style="width:300px" role="form" method="post" action="index.html">
-                    <div class="form-group"><input type="text" class="form-control" placeholder="用户名"></div>
-                    <div class="form-group"><input type="password" class="form-control" placeholder="密码"></div>
-                    <div class="form-group"><button class="btn btn-success btn-block btnLogin">登录</button></div>
-                </form>
+            <div style="display:inline-table;width:300px">
+                    <div class="form-group"><input id="username" type="text" class="form-control" placeholder="用户名"></div>
+                    <div class="form-group"><input id="password" type="password" class="form-control" placeholder="密码"></div>
+                    <div class="form-group"><button id="btnLogin" class="btn btn-success btn-block btnLogin">登录</button></div>
             </div>
         </div>
         <div class="col-md-4"></div>
@@ -45,5 +43,6 @@
 <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/canvas.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
 </body>
 </html>
