@@ -8,9 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>信息化中心知识分享平台</title>
+    <title>知识库</title>
   </head>
   <body>
-  <a href="forward/login.go">gogogo121212313</a>
+  <div style="text-align: right;">
+    <a href="forward/login.go">登录</a>
+  </div>
+
   </body>
 </html>
