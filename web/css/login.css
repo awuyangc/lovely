@@ -13,8 +13,10 @@
 }
 .btnLogin{
     background-color:#00aeef;
+    color: #ffffff;
 }
 .btnLogin:hover
 {
     background-color:#00bff3;
+    color: #ffffff;
 }
