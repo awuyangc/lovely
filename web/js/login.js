@@ -12,7 +12,7 @@ $(function(){
             data: {username: username, password: password},
             success: function (result) {
                 if (result) {
-                    window.location.href="index.action";
+                    window.location.href="forward/index.action";
                 }
                 else {
                     alert("用户名或密码错误");
