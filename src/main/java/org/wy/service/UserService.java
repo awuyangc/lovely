@@ -1,5 +1,6 @@
 package org.wy.service;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class UserService {
                 user.setUser_name(rs.getString("user_name"));
                 user.setUser_nickname(rs.getString("user_nickname"));
                 user.setPassword(rs.getString("password"));
-                user.setRoles((List<Role>) rs.getObject("roles"));
+                user.setRoles( rs.getString("roles"));
                 return user;
             }
         }, userId);

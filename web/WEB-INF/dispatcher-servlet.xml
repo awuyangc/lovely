@@ -27,13 +27,4 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <!-- 拦截器 -->
-    <mvc:interceptors>
-        <!-- 多个拦截器，顺序执行 -->
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="org.wy.interceptor.LoginInterceptor"></bean>
-        </mvc:interceptor>
-    </mvc:interceptors>
-
 </beans>

@@ -12,6 +12,8 @@
 
     <context:property-placeholder location="/WEB-INF/jdbc.properties"/>
 
+
+
     <bean id="dataSource" name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${local.driver}"/>
         <property name="url" value="${local.url}"/>
