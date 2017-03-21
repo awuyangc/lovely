@@ -15,7 +15,7 @@ $(function(){
                     window.location.href="forward/index.action";
                 }
                 else {
-                    alert(result);
+                    $("#passwordErr").animate({opacity:1,right:10}, 350);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -23,4 +23,7 @@ $(function(){
             }
         });
     });
+    $("#password").click(function(){
+        $("#passwordErr").animate({opacity:0,right:0}, 250);
+    })
 });

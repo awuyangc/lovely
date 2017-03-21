@@ -27,9 +27,16 @@
             <div class="maintitle"></div>
             <div class="subtitle">与他人分享你的知识、经验和见解</div>
             <div style="display:inline-table;width:300px">
-                    <div class="form-group"><input id="username" type="text" class="form-control" placeholder="用户名"></div>
-                    <div class="form-group"><input id="password" type="password" class="form-control" placeholder="密码"></div>
-                    <div class="form-group"><button id="btnLogin" class="btn  btn-block btnLogin">登录</button></div>
+                    <div class="form-group">
+                        <input id="username" type="text" class="form-control" placeholder="用户名">
+                    </div>
+                    <div class="form-group" style="position:relative">
+                        <input id="password" type="password" class="form-control" placeholder="密码">
+                        <label id="passwordErr" style="opacity:0;" class="error">帐号或密码错误</label>
+                    </div>
+                    <div class="form-group">
+                        <button id="btnLogin" class="btn  btn-block btnLogin">登录</button>
+                    </div>
             </div>
         </div>
         <div class="col-md-4"></div>
