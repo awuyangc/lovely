@@ -1,5 +1,6 @@
 package org.wy.controller;
 
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -7,9 +8,12 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.wy.model.User;
+import org.wy.service.UserService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +27,12 @@ import java.util.List;
 @RequestMapping("/login")
 public class LoginController {
     @Resource
-    private JdbcTemplate jdbcTemplate;
+    private UserService userService;
     @RequestMapping(value="/check")
     @ResponseBody
-    public boolean checklogin(HttpSession session, HttpServletRequest request, String username, String password) throws Exception {
+    public String checklogin(HttpSession session, HttpServletRequest request, String username, String password) throws Exception {
+        String result="";
+        password = DigestUtils.md5DigestAsHex(password.getBytes()) ;
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         token.setRememberMe(true);
         System.out.println("为了验证登录用户而封装的token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
@@ -39,33 +45,31 @@ public class LoginController {
             System.out.println("对用户[" + username + "]进行登录验证..验证开始");
             currentUser.login(token);
             System.out.println("对用户[" + username + "]进行登录验证..验证通过");
-            return true;
         } catch (UnknownAccountException uae) {
             System.out.println("对用户[" + username + "]进行登录验证..验证未通过,未知账户");
-            request.setAttribute("message_login", "未知账户");
+            result="未知账户";
         } catch (IncorrectCredentialsException ice) {
             System.out.println("对用户[" + username + "]进行登录验证..验证未通过,错误的凭证");
-            request.setAttribute("message_login", "密码不正确");
+            result="密码不正确";
         } catch (LockedAccountException lae) {
             System.out.println("对用户[" + username + "]进行登录验证..验证未通过,账户已锁定");
-            request.setAttribute("message_login", "账户已锁定");
+            result="账户已锁定";
         } catch (ExcessiveAttemptsException eae) {
             System.out.println("对用户[" + username + "]进行登录验证..验证未通过,错误次数过多");
-            request.setAttribute("message_login", "用户名或密码错误次数过多");
+            result="用户名或密码错误次数过多";
         } catch (AuthenticationException ae) {
             //通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景
             System.out.println("对用户[" + username + "]进行登录验证..验证未通过,堆栈轨迹如下");
             ae.printStackTrace();
-            request.setAttribute("message_login", "用户名或密码不正确");
+            result="用户名或密码不正确";
         }
         //验证是否登录成功
         if (currentUser.isAuthenticated()) {
             System.out.println("用户[" + username + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)");
-            return true;
         } else {
             token.clear();
-            return false;
         }
+        return result;
     }
 
     //退出系统

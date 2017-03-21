@@ -11,11 +11,11 @@ $(function(){
             type: "POST",
             data: {username: username, password: password},
             success: function (result) {
-                if (result) {
+                if (result=="") {
                     window.location.href="forward/index.action";
                 }
                 else {
-                    alert("用户名或密码错误");
+                    alert(result);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -17,6 +17,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.wy.model.Permission;
 import org.wy.model.Role;
 import org.wy.model.User;
@@ -30,8 +33,10 @@ import java.util.List;
 /**
  * Created by wuyang on 2017/3/20.
  */
+@Service
 public class MyRealm extends AuthorizingRealm {
-    private UserService userService =new UserService();
+    @Resource
+    private UserService userService;
     /**
      * 为当前登录的Subject授予角色和权限
      *  经测试:本例中该方法的调用时机为需授权资源被访问时
@@ -107,7 +112,7 @@ public class MyRealm extends AuthorizingRealm {
         System.out.println("验证当前Subject时获取到token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
         User user = userService.getUserById(token.getUsername());
       if(null != user){
-          AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUser_id(), user.getPassword(), user.getUser_name());
+          AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUser_id(), user.getPassword(),user.getUser_name());
           this.setSession("currentUser", user);
           return authcInfo;
       }else{
