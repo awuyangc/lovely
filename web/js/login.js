@@ -15,6 +15,7 @@ $(function(){
                     window.location.href="forward/index.action";
                 }
                 else {
+                    $("#passwordErr").text(result)
                     $("#passwordErr").animate({opacity:1,right:10}, 350);
                 }
             },

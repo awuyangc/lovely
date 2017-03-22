@@ -12,6 +12,18 @@
     <!--css区域-->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet">
+    <script type="text/javascript">
+        var DEFAULT_VERSION = "8.0";
+        var ua = navigator.userAgent.toLowerCase();
+        var isIE = ua.indexOf("msie")>-1;
+        var safariVersion;
+        if(isIE){
+            safariVersion =  ua.match(/msie ([\d.]+)/)[1];
+            if(safariVersion <= DEFAULT_VERSION ){
+                window.location.href="forward/iecheck.action";
+            }
+        }
+    </script>
 </head>
 <body>
 <canvas style="position:absolute;z-index:-1" id="canvas"></canvas>

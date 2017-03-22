@@ -11,6 +11,6 @@
     <title>知识库</title>
   </head>
   <body>
-首页
+首页${session.getAttribute("a").toString()}
   </body>
 </html>
