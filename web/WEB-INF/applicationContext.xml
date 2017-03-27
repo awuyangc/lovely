@@ -55,7 +55,7 @@
                 /forward/login.action=anon
                 /view/login.jsp=anon
                 /forward/iecheck.action=anon
-                /forward/**=authc
+                /forward/*.action=authc
                 /error/**=anon
                 /admin/**=authc,perms[admin:manage]
             </value>

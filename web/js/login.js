@@ -62,4 +62,11 @@ $(function(){
     $("#reloadValidateCode").click(function(){
         $("#validateCodeImg").attr("src","/login/validateCode.action?data=" + new Date() + Math.floor(Math.random()*24));
     })
+
+    //监控回车键
+    $(document).keydown(function(event){
+        if(event.keyCode==13){
+            $("#btnLogin").click();
+        }
+    });
 });

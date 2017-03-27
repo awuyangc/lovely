@@ -48,7 +48,7 @@ public class LoginController {
         }
         password = DigestUtils.md5DigestAsHex(password.getBytes()) ;
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        token.setRememberMe(true);
+        token.setRememberMe(false);
         //获取当前的Subject
         Subject currentUser = SecurityUtils.getSubject();
         try {

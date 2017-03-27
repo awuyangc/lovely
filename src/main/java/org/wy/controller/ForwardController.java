@@ -24,6 +24,7 @@ public class ForwardController {
     }
     @RequestMapping("/index")
     public String toIndex(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+
         return "index";
     }
     @RequestMapping("/iecheck")
