@@ -59,9 +59,21 @@ body{
     resize: none;
     line-height:35px;
     background: #f7f8fa;
-    width:326px;
+    width:400px;
     border: 1px solid #e7eaf1;
     border-radius: 5px;
     margin-left:30px;
     padding-left:10px;
+    /*background: url(/images/search24.ico) no-repeat right 10px center;*/
+}
+
+.searchImg{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+    right: 10px;
+}
+.searchImg:hover{
+    cursor: hand;
 }

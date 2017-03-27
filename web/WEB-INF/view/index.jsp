@@ -16,7 +16,10 @@
   <nav class="navbar wy-navbar">
       <div class="wy-header">
         <img class="logo_small" src="/images/logo_small.png"/>
-        <input class="wy-search" type="text" autocomplete="off" value="" maxlength="100" placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list">
+        <span style="position:relative;width:400px">
+        <input class="wy-search" type="text" autocomplete="off" value="" maxlength="100" placeholder="搜索你感兴趣的内容..." aria-autocomplete="list">
+        <img class="searchImg" src="/images/search32.ico">
+        </span>
         <nav class="wy-header-nav">
           <a href="/forward/index.action">首页</a>
           <a href="#">发现</a>
