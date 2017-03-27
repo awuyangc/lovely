@@ -18,9 +18,9 @@
         <img class="logo_small" src="/images/logo_small.png"/>
         <input class="wy-search" type="text" autocomplete="off" value="" maxlength="100" placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list">
         <nav class="wy-header-nav">
-          <a href="index.asp">首页</a>
-          <a href="html5_meter.asp">发现</a>
-          <a href="html5_noscript.asp">话题</a>
+          <a href="/forward/index.action">首页</a>
+          <a href="#">发现</a>
+          <a href="#">话题</a>
         </nav>
       </div>
   </nav>
