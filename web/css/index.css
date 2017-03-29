@@ -3,7 +3,6 @@ body{
     font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
 }
 .wy-navbar{
-    z-index:100;
     top:0;
     left:0;
     line-height:50px;
@@ -99,9 +98,8 @@ body{
 }
 
 .downMenu{
-    z-index:200;
     position:absolute;
-    top:51px;
+    top:45px;
     height:110px;
     width:120px;
     right:calc(50% - 500px - 43px) ;/*(50%-居中导航栏宽度/2 - 当前元素宽度/2 - 图标宽度/2)*/
@@ -140,4 +138,8 @@ body{
     vertical-align: text-bottom;
     fill: #9fadc7;
     margin-right:6px;
+}
+
+.showMenu{
+    /*条件判断，没有具体样式*/
 }

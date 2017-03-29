@@ -1,8 +1,10 @@
 package org.wy.controller;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,5 +32,12 @@ public class ForwardController {
     @RequestMapping("/iecheck")
     public String toIndex(){
         return "iecheck";
+    }
+    //退出系统
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session) throws Exception{
+        //清除Session
+        SecurityUtils.getSubject().logout();
+        return "login";
     }
 }
