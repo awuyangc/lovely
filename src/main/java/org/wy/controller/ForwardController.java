@@ -33,11 +33,4 @@ public class ForwardController {
     public String toIndex(){
         return "iecheck";
     }
-    //退出系统
-    @RequestMapping(value="/logout")
-    public String logout(HttpSession session) throws Exception{
-        //清除Session
-        SecurityUtils.getSubject().logout();
-        return "login";
-    }
 }

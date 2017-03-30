@@ -10,12 +10,12 @@
   <head>
     <title>知识库</title>
     <script type="text/javascript">
-      window.location.href="forward/login.action"
+      window.location.href="/forward/login.action"
     </script>
   </head>
   <body>
   <div style="text-align: right;">
-    <a href="forward/login.action">登录</a>
+    <a href="/forward/login.action">登录</a>
   </div>
 
   </body>

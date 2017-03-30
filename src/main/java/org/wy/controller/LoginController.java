@@ -88,4 +88,11 @@ public class LoginController {
         BufferedImage bim = ValidateCode.generateImageCode(verifyCode, 80, 25, 0, true, Color.WHITE, Color.BLACK, null);
         ImageIO.write(bim, "JPEG", response.getOutputStream());
     }
+    //退出系统
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session) throws Exception{
+        //清除Session
+        SecurityUtils.getSubject().logout();
+        return "redirect:/";
+    }
 }
