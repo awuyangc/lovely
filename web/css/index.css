@@ -144,3 +144,68 @@ body{
     /*条件判断，没有具体样式*/
     display:none;
 }
+
+.mainDiv{
+    padding-top: 20px;
+    position: relative;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+.firstMenu{
+    float:left;
+}
+.secondMenu{
+    margin-left: 58px;
+    height: 48px;
+    line-height: 48px;
+    background: #f0f0f0;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    position: relative;
+}
+
+.divleft{
+    max-width:650px;
+    padding-right:50px;
+}
+
+.divRight{
+    max-width: 300px;
+    float: right;
+}
+
+.boxArrow{
+    line-height: 48px;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: -10px;
+    top: 10px;
+}
+
+.boxArrow::before{
+    border-top-color: #f0f0f0;
+    border-width: 14px;
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    top: 0;
+    left: 0;
+}
+
+.boxArrow::after{
+    border-top-color: #fafafa;
+    border-width: 13px;
+    top: 1px;
+    left: 2px;
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: solid transparent;
+    top: 0;
+    left: 0;
+}

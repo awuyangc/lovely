@@ -52,8 +52,18 @@
         </svg>退出</a>
     </div>
   </div>
-    <div>
-      首页${sessionScope.currentUser.user_name}
+    <div class="mainDiv">
+      <div class="divleft">
+        <div class="firstMenu">
+          <img src="/images/headimg/myhead.jpg">
+        </div>
+        <div class="secondMenu">
+          <div class="boxArrow"></div>
+        </div>
+      </div>
+      <div class="divRight">
+
+      </div>
     </div>
   <!--js区域-->
   <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
