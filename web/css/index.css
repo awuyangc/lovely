@@ -1,7 +1,13 @@
 body{
     background:#f8f8f8;
-    font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
+
+a{
+    text-decoration: none;
+}
+
+
 .wy-navbar{
     top:0;
     left:0;
@@ -155,6 +161,7 @@ body{
     float:left;
 }
 .secondMenu{
+    display:flex;
     margin-left: 58px;
     height: 48px;
     line-height: 48px;
@@ -162,6 +169,100 @@ body{
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     position: relative;
+}
+
+.secondMenu-item-1{
+    padding:0px 32px 0px 27px;
+}
+
+.secondMenu-item-1 a{
+    color:#6c829f;
+    font-size:14px;
+}
+
+.secondMenu-item-1 a:hover{
+    color:#259;
+}
+
+.secondMenu-item-1 a:hover >i{
+    background-position: -122px -30px;
+}
+
+.secondMenu-item-1 i{
+    display: inline-block;
+    vertical-align: middle;
+    background-image:url(/images/sprites.png);
+    background-repeat: no-repeat;
+    background-position: -148px -30px;
+    width: 24px;
+    height: 24px;
+}
+
+.secondMenu-item-2{
+    padding:0px 32px 0px 27px;
+}
+
+.secondMenu-item-2 a{
+    color:#6c829f;
+    font-size:14px;
+}
+
+.secondMenu-item-2 a:hover{
+    color:#259;
+}
+
+.secondMenu-item-2 a:hover >i{
+    background-position: -96px -56px;
+}
+
+.secondMenu-item-2 i{
+    display: inline-block;
+    vertical-align: middle;
+    background-image:url(/images/sprites.png);
+    background-repeat: no-repeat;
+    background-position: -96px -30px;
+    width: 24px;
+    height: 24px;
+}
+
+.secondMenu-item-3{
+    padding:0px 32px 0px 27px;
+}
+
+.secondMenu-item-3 a{
+    color:#6c829f;
+    font-size:14px;
+}
+
+.secondMenu-item-3 a:hover{
+    color:#259;
+}
+
+.secondMenu-item-3 a:hover >i{
+    background-position: -174px -30px;
+}
+
+.secondMenu-item-3 i{
+    display: inline-block;
+    vertical-align: middle;
+    background-image:url(/images/sprites.png);
+    background-repeat: no-repeat;
+    background-position: -122px -56px;
+    width: 24px;
+    height: 24px;
+}
+
+.secondMenu-item-4{
+    padding:0px 32px 0px 27px;
+}
+
+.secondMenu-item-4 a{
+    color:#6c829f;
+    font-size:12px;
+}
+
+.secondMenu-item-4 a:hover{
+    color:#259;
 }
 
 .divleft{
