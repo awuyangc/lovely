@@ -63,3 +63,26 @@ label.validateCodeError{
     border-radius:5px;
 }
 
+.modal.in .modal-dialog
+{
+    -webkit-transform:translate(0,45%);
+    -ms-transform:translate(0,450%);
+    -o-transform:translate(0,45%);
+    transform:translate(0,45%)
+}
+.modal-dialog
+{
+    position:absolute;
+    width:auto;
+    margin:10px auto;
+    left:0;
+    right:0;
+    top:0;
+}
+@media (min-width:768px)
+{
+    .modal-dialog
+    {
+        width:600px
+    }
+}

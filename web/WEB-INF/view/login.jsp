@@ -33,7 +33,7 @@
 <canvas style="position:absolute;z-index:-1" id="canvas"></canvas>
 <div class="container-fluid">
     <div class="text-right" style="padding-top: 10px;">
-        <a href="">注册</a>
+        <input type="button" id="btnRegister" class="btn btn-primary" data-toggle="modal" value="注册"></input>
     </div>
     <div class="row" style="height:15%;"></div>
     <div class="row" style="height:60%">
@@ -67,6 +67,40 @@
     <div>
 
     </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title lead" id="myModalLabel">
+                    新用户注册
+                </h4>
+            </div>
+            <div class="modal-body  text-center">
+                <div style="display:inline-table;width:300px">
+                    <div class="form-group" style="position:relative">
+                        <input id="registerName" type="text" class="form-control" placeholder="用户名">
+                        <label id="registerNameErr" style="opacity:0;" class="usernameError">用户名错误</label>
+                    </div>
+                    <div class="form-group" style="position:relative">
+                        <input id="registerPassword" type="password" class="form-control" placeholder="密码">
+                        <label id="registerPasswordErr" style="opacity:0;" class="passwordError">密码错误</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary">
+                    注册知识库
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 <!--js区域-->
 <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>

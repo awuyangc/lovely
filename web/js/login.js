@@ -66,7 +66,22 @@ $(function(){
     //监控回车键
     $(document).keydown(function(event){
         if(event.keyCode==13){
-            $("#btnLogin").click();
+            if($("#myModal").css("display")!="none"){
+                return;
+            }
+            else{
+                $("#btnLogin").click();
+            }
+
         }
     });
+
+    //注册按钮事件
+    $("#btnRegister").click(function(){
+        //弹出注册框，模态
+        $('#myModal').modal({backdrop: 'static', keyboard: false});
+    });
+    $('#myModal').on('hidden.bs.modal', function () {
+        // 注册框隐藏后执行操作
+    })
 });
