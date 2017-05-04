@@ -8,18 +8,16 @@ import java.util.List;
  */
 public class User {
     private String  user_id;
+    private String  user_open_id;
     private String  user_name;
-    private String  password;
+    private String  user_password;
     private String  user_nickname;
+    private String create_time;
     private String roles;
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles ) {
-        this.roles = roles;
-    }
-
+    private String head_img;
+    private String sex;
+    private String industry;
+    private String introduce;
 
     public String getUser_id() {
         return user_id;
@@ -37,12 +35,12 @@ public class User {
         this.user_name = user_name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUser_password() {
+        return user_password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
     }
 
     public String getUser_nickname() {
@@ -51,5 +49,61 @@ public class User {
 
     public void setUser_nickname(String user_nickname) {
         this.user_nickname = user_nickname;
+    }
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public String getHead_img() {
+        return head_img;
+    }
+
+    public void setHead_img(String head_img) {
+        this.head_img = head_img;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
+    public String getUser_open_id() {
+        return user_open_id;
+    }
+
+    public void setUser_open_id(String user_open_id) {
+        this.user_open_id = user_open_id;
     }
 }

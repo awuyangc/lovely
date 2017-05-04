@@ -29,10 +29,15 @@ public class UserService {
                 user.setUser_id(rs.getString("user_id"));
                 user.setUser_name(rs.getString("user_name"));
                 user.setUser_nickname(rs.getString("user_nickname"));
-                user.setPassword(rs.getString("password"));
+                user.setUser_password(rs.getString("user_password"));
                 user.setRoles( rs.getString("roles"));
                 return user;
             }
         }, userId);
+    }
+
+    public int addUser(User user){
+        String sql="insert into user(user_id,user_password,user_nickname,create_time,roles) values(?,md5(?),?,now(),0)";
+        return jdbcTemplate.update(sql, new Object[] {user.getUser_id(),user.getUser_password(),user.getUser_nickname()});
     }
 }

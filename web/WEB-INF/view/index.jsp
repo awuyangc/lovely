@@ -8,77 +8,62 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>知识库</title>
+    <title>看图答题</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <!-- head 中 -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
   </head>
-  <body>
-  <div>
-    <nav class="navbar wy-navbar">
-        <div class="wy-header">
-          <img class="logo_small" src="/images/logo_small.png"/>
-          <span class="searchSpan">
-            <input class="wy-search" type="text" autocomplete="off" value="" maxlength="100" placeholder="搜索你感兴趣的内容..." aria-autocomplete="list">
-            <img class="searchImg" src="/images/search32.ico">
-          </span>
-          <nav class="wy-header-nav">
-            <a href="/forward/index.action">首页</a>
-            <a href="#">发现</a>
-            <a href="#">话题</a>
-          </nav>
-          <img id="headmenu" class="myheadImg" src="/images/headimg/myhead.jpg">
-        </div>
-    </nav>
-    <div class="downMenu hiddenMenu" style="opacity:0;">
-      <a href="#">
-        <svg viewBox="0 0 20 20" class="Icon" aria-hidden="true" style="height: 16px; width: 14px;">
-          <title></title>
-          <g>
-            <path d="M13.4170937,10.9231839 C13.0412306,11.5757324 12.5795351,12.204074 12.6542924,12.7864225 C12.9457074,15.059449 18.2164534,14.5560766 19.4340179,15.8344151 C20,16.4286478 20,16.4978969 20,19.9978966 C13.3887136,19.9271077 6.63736785,19.9978966 0,19.9978966 C0.0272309069,16.4978969 0,16.5202878 0.620443914,15.8344151 C1.92305664,14.3944356 7.20116276,15.1185829 7.40016946,12.7013525 C7.44516228,12.1563518 7.02015319,11.5871442 6.63736814,10.9228381 C4.51128441,7.2323256 3.69679769,4.67956187e-11 10,9.32587341e-14 C16.3032023,-4.66091013e-11 15.4216968,7.4429255 13.4170937,10.9231839 Z"></path>
-          </g>
-        </svg>我的主页</a>
-      <a href="#">
-        <svg viewBox="0 0 20 20" class="Icon" aria-hidden="true" style="height: 16px; width: 14px;">
-          <title></title>
-          <g>
-            <path d="M18.868 15.185c-.164.096-.315.137-.452.137-.123 0-1.397-.26-1.617-.233-1.355.013-1.782 1.275-1.836 1.74-.055.454 0 .893.19 1.304.138.29.125.577-.067.85-.863.893-2.165 1.016-2.357 1.016-.123 0-.247-.055-.356-.15-.11-.097-.685-1.14-1.07-1.47-1.303-.954-2.246-.328-2.63 0-.397.33-.67.7-.835 1.126-.07.18-.18.302-.33.37-1.354.426-2.918-.92-3.014-1.056-.082-.11-.123-.22-.123-.356-.014-.138.383-1.276.342-1.688-.342-1.9-1.836-1.687-2.096-1.673-.303.014-.604.068-.92.178-.205.056-.396.03-.588-.054-.888-.462-1.137-2.332-1.11-2.51.055-.315.192-.52.438-.604.425-.164.81-.452 1.15-.85.932-1.262.344-2.25 0-2.634-.34-.356-.725-.645-1.15-.81-.137-.04-.233-.15-.328-.315C-.27 6.07.724 4.95.978 4.733c.255-.22.6-.055.723 0 .426.164.878.22 1.344.15C4.7 4.636 4.784 3.14 4.81 2.908c.015-.247-.11-1.29-.136-1.4-.027-.123-.014-.22.027-.315C5.318.178 7.073 0 7.223 0c.178 0 .33.055.44.178.108.124.63 1.11 1 1.4.398.338 1.582.83 2.588.013.398-.273.96-1.288 1.083-1.412.123-.123.26-.178.384-.178 1.56 0 2.33 1.03 2.438 1.22.083.124.096.248.07.37-.03.152-.33 1.153-.262 1.606.366 1.537 1.384 1.742 1.89 1.783.494.027 1.645-.357 1.81-.344.164.014.315.083.424.206.535.31.85 1.715.905 2.14.027.233-.014.44-.11.562-.11.138-1.165.714-1.48 1.112-.855.982-.342 2.25-.068 2.606.26.37 1.22.905 1.288.96.15.137.26.302.315.494.146 1.413-.89 2.387-1.07 2.47zm-8.905-.535c.644 0 1.246-.123 1.822-.356.575-.248 1.082-.59 1.493-1.016.425-.425.754-.92 1-1.495.247-.562.357-1.18.357-1.81 0-.66-.11-1.262-.356-1.825-.248-.562-.577-1.056-1.002-1.48-.41-.427-.918-.756-1.493-1.003-.576-.233-1.178-.357-1.822-.357-.644 0-1.247.124-1.81.357-.56.247-1.067.576-1.478 1.002-.425.425-.768.92-1 1.48-.247.564-.37 1.167-.37 1.826 0 .644.123 1.248.37 1.81.232.563.575 1.07 1 1.495.424.426.917.768 1.48 1.016.56.233 1.164.356 1.808.356z"></path>
-          </g>
-        </svg>设置</a>
-      <a href="/login/logout.action">
-        <svg viewBox="0 0 20 20" class="Icon" aria-hidden="true" style="height: 16px; width: 14px;">
-          <title></title>
-          <g>
-            <path d="M0 10C0 7.242 1.154 4.58 3.167 2.697c.51-.477 1.31-.45 1.79.06.475.51.45 1.31-.06 1.787C3.37 5.975 2.53 7.91 2.53 10c0 4.118 3.35 7.468 7.47 7.468 4.12 0 7.47-3.35 7.47-7.47 0-2.04-.81-3.948-2.28-5.37-.5-.485-.514-1.286-.028-1.788.485-.5 1.286-.517 1.79-.03C18.915 4.712 20 7.265 20 10c0 5.512-4.486 9.998-10 9.998s-10-4.486-10-10zm8.7-.483V1.26C8.7.564 9.26 0 9.96 0c.695 0 1.26.564 1.26 1.26v8.257c0 .696-.565 1.26-1.26 1.26-.698 0-1.26-.564-1.26-1.26z"></path>
-          </g>
-        </svg>退出</a>
+
+  <div class="page" id="page1">
+    <div class="container-fluid">
+      <div class="row" style="padding-bottom:20px">
+        <div class="col-xs-12"><image src="files/1.jpg"  class="img-thumbnail"></image></div>
+      </div>
+      <div class="row" style="padding-bottom:20px">
+        <div class="col-xs-4"><input type="radio" name="radio1" value="A">A</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="B">B</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="C">C</div>
+      </div>
+      <div class="row" style="padding-bottom:20px">
+        <div class="col-xs-4"><input type="radio" name="radio1" value="D">D</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="E">E</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="F">F</div>
+      </div>
     </div>
   </div>
-    <div class="mainDiv">
-      <div class="divleft">
-        <div class="firstMenu">
-          <img src="/images/headimg/myhead.jpg">
-        </div>
-        <div class="secondMenu">
-          <div class="boxArrow"></div>
-          <div class="secondMenu-item-1">
-            <a href="#"><i></i>提问</a>
-          </div>
-          <div class="secondMenu-item-2">
-            <a href="#"><i></i>回答</a>
-          </div>
-          <div class="secondMenu-item-3">
-            <a href="#"><i></i>写文章</a>
-          </div>
-          <div class="secondMenu-item-4">
-            <a href="#">草稿</a>
-          </div>
-        </div>
+  <div class="page hidden" id="page2">
+    <div class="container-fluid">
+      <div class="row" style="padding-bottom:20px">
+        <div class="col-xs-12"><image src="files/1.jpg"  class="img-thumbnail"></image></div>
       </div>
-      <div class="divRight">
-
+      <div class="row" style="padding-bottom:20px">
+        <div class="col-xs-4"><input type="radio" name="radio1" value="A">1</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="B">2</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="C">3</div>
+      </div>
+      <div class="row" style="padding-bottom:20px">
+        <div class="col-xs-4"><input type="radio" name="radio1" value="D">4</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="E">5</div>
+        <div class="col-xs-4"><input type="radio" name="radio1" value="F">6</div>
       </div>
     </div>
+  </div>
+
+  <footer class="footer navbar-fixed-bottom">
+    <div class="container">
+      <div class="row" style="padding-bottom:10%">
+        <div class="col-xs-6 text-center"><a class="btn btn-default fowardBtn"  href="#" role="button">上一页</a></div>
+        <div class="col-xs-6 text-center"><a class="btn btn-default fowardBtn"  href="#" role="button">下一页</a></div>
+        <input id="pageFlag" type="hidden" value="page1"/>
+      </div>
+    </div>
+  </footer>
+  <body>
+
   <!--js区域-->
   <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/index.js"></script>
   </body>
 </html>

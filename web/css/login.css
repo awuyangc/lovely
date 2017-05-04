@@ -86,3 +86,13 @@ label.validateCodeError{
         width:600px
     }
 }
+
+label.nickNameError{
+    position:absolute;
+    top:0px;
+    right:0px;
+    padding:0 0px;
+    line-height:34px;
+    color:#c33;
+    cursor:text;
+}

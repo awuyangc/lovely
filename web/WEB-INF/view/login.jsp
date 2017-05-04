@@ -33,7 +33,7 @@
 <canvas style="position:absolute;z-index:-1" id="canvas"></canvas>
 <div class="container-fluid">
     <div class="text-right" style="padding-top: 10px;">
-        <input type="button" id="btnRegister" class="btn btn-primary" data-toggle="modal" value="注册"></input>
+        <input type="button" id="btnToRegister" class="btn btn-primary" data-toggle="modal" value="注册"></input>
     </div>
     <div class="row" style="height:15%;"></div>
     <div class="row" style="height:60%">
@@ -90,12 +90,16 @@
                         <input id="registerPassword" type="password" class="form-control" placeholder="密码">
                         <label id="registerPasswordErr" style="opacity:0;" class="passwordError">密码错误</label>
                     </div>
+                    <div class="form-group" style="position:relative">
+                        <input id="nickName" type="text" class="form-control" placeholder="昵称">
+                        <label id="nickNameErr" style="opacity:0;" class="nickNameError">昵称不符合规范</label>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                <button id="btnClose" type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button id="btnRegister" type="button" class="btn btn-primary">
                     注册知识库
                 </button>
             </div>

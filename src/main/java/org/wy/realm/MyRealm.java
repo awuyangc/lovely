@@ -112,7 +112,7 @@ public class MyRealm extends AuthorizingRealm {
         System.out.println("验证当前Subject时获取到token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
         User user = userService.getUserById(token.getUsername());
       if(null != user){
-          AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUser_id(), user.getPassword(),user.getUser_name());
+          AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getUser_id(), user.getUser_password(),user.getUser_nickname());
           this.setSession("currentUser", user);
           return authcInfo;
       }else{
@@ -127,8 +127,8 @@ public class MyRealm extends AuthorizingRealm {
             this.setSession("currentUser", "jadyer");
             return authcInfo;
         }else if("玄玉".equals(token.getUsername())){
-            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo("玄玉", "xuanyu", this.getName());
-            this.setSession("currentUser", "玄玉");
+            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo("伍杨", "xuanyu", this.getName());
+            this.setSession("currentUser", "伍杨");
             return authcInfo;
         }
 

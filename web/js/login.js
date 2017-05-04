@@ -76,12 +76,39 @@ $(function(){
         }
     });
 
-    //注册按钮事件
-    $("#btnRegister").click(function(){
+    //弹出注册框按钮事件
+    $("#btnToRegister").click(function(){
         //弹出注册框，模态
         $('#myModal').modal({backdrop: 'static', keyboard: false});
     });
     $('#myModal').on('hidden.bs.modal', function () {
         // 注册框隐藏后执行操作
+        $("#registerName").val("");
+        $("#registerPassword").val("");
+        $("#nickName").val("");
     })
+
+    //注册用户按钮
+    $("#btnRegister").click(function(){
+        //校验数据是否正确
+
+        //进行注册操作
+        var user_id=$("#registerName").val();
+        var user_password=$("#registerPassword").val();
+        var user_nickname=$("#nickName").val();
+        $.ajax({
+            url: "/user/register.action",
+            type: "POST",
+            data: {user_id: user_id, user_password: user_password,user_nickname:user_nickname},
+            success: function (result) {
+                if(result){
+                    alert("注册成功");
+                    $("#btnClose").click();
+                }
+                else{
+                    alert("注册失败");
+                }
+            }
+        });
+    });
 });
