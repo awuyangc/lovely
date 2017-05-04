@@ -9,53 +9,23 @@
 <html>
   <head>
     <title>看图答题</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- head 中 -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
   </head>
 
-  <div class="page" id="page1">
-    <div class="container-fluid">
-      <div class="row" style="padding-bottom:20px">
-        <div class="col-xs-12"><image src="files/1.jpg"  class="img-thumbnail"></image></div>
-      </div>
-      <div class="row" style="padding-bottom:20px">
-        <div class="col-xs-4"><input type="radio" name="radio1" value="A">A</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="B">B</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="C">C</div>
-      </div>
-      <div class="row" style="padding-bottom:20px">
-        <div class="col-xs-4"><input type="radio" name="radio1" value="D">D</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="E">E</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="F">F</div>
-      </div>
-    </div>
-  </div>
-  <div class="page hidden" id="page2">
-    <div class="container-fluid">
-      <div class="row" style="padding-bottom:20px">
-        <div class="col-xs-12"><image src="files/1.jpg"  class="img-thumbnail"></image></div>
-      </div>
-      <div class="row" style="padding-bottom:20px">
-        <div class="col-xs-4"><input type="radio" name="radio1" value="A">1</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="B">2</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="C">3</div>
-      </div>
-      <div class="row" style="padding-bottom:20px">
-        <div class="col-xs-4"><input type="radio" name="radio1" value="D">4</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="E">5</div>
-        <div class="col-xs-4"><input type="radio" name="radio1" value="F">6</div>
-      </div>
-    </div>
+  <div class="pages">
+
   </div>
 
   <footer class="footer navbar-fixed-bottom">
     <div class="container">
-      <div class="row" style="padding-bottom:10%">
-        <div class="col-xs-6 text-center"><a class="btn btn-default fowardBtn"  href="#" role="button">上一页</a></div>
-        <div class="col-xs-6 text-center"><a class="btn btn-default fowardBtn"  href="#" role="button">下一页</a></div>
-        <input id="pageFlag" type="hidden" value="page1"/>
+      <div class="row" style="padding-bottom:10px">
+        <div class="col-xs-6 text-center divBefore"><a class="btn btn-default beforeBtn hidden"  href="#" role="button">上一页</a></div>
+        <div class="col-xs-6 text-center divNext"><a class="btn btn-default nextBtn"  href="#" role="button">下一页</a></div>
+        <div class="col-xs-6 text-center divComplete hidden"><a class="btn btn-default"  href="#" role="button">完成</a></div>
+        <input id="pageFlag" type="hidden" value="1"/>
       </div>
     </div>
   </footer>
