@@ -2,15 +2,14 @@
  * Created by Administrator on 2017/3/28.
  */
 $(function(){
+    var url= location.href.split('#')[0];
     $.ajax({
         url: "/wechat/JSSDK_Config.action",
         type: "POST",
-        data: {total: totalQuestion},
+        data: {url: url},
         success: function (result) {
-            alert(result.access_token);
-            /*
             wx.config({
-                debug: false,
+                debug: true,
                 appId: result.appId,
                 timestamp: result.timestamp,
                 nonceStr: result.nonceStr,
@@ -22,36 +21,9 @@ $(function(){
                     'onMenuShareQQ',
                     'onMenuShareWeibo',
                     'hideMenuItems',
-                    'showMenuItems',
-                    'hideAllNonBaseMenuItem',
-                    'showAllNonBaseMenuItem',
-                    'translateVoice',
-                    'startRecord',
-                    'stopRecord',
-                    'onRecordEnd',
-                    'playVoice',
-                    'pauseVoice',
-                    'stopVoice',
-                    'uploadVoice',
-                    'downloadVoice',
-                    'chooseImage',
-                    'previewImage',
-                    'uploadImage',
-                    'downloadImage',
-                    'getNetworkType',
-                    'openLocation',
-                    'getLocation',
-                    'hideOptionMenu',
-                    'showOptionMenu',
-                    'closeWindow',
-                    'scanQRCode',
-                    'chooseWXPay',
-                    'openProductSpecificView',
-                    'addCard',
-                    'chooseCard',
-                    'openCard'
+                    'showMenuItems'
                 ]
-            });*/
+            });
         }
     });
 
