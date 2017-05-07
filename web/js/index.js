@@ -2,9 +2,62 @@
  * Created by Administrator on 2017/3/28.
  */
 $(function(){
+    $.ajax({
+        url: "/wechat/JSSDK_Config.action",
+        type: "POST",
+        data: {total: totalQuestion},
+        success: function (result) {
+            alert(result.access_token);
+            /*
+            wx.config({
+                debug: false,
+                appId: result.appId,
+                timestamp: result.timestamp,
+                nonceStr: result.nonceStr,
+                signature:result.signature,
+                jsApiList: [
+                    'checkJsApi',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo',
+                    'hideMenuItems',
+                    'showMenuItems',
+                    'hideAllNonBaseMenuItem',
+                    'showAllNonBaseMenuItem',
+                    'translateVoice',
+                    'startRecord',
+                    'stopRecord',
+                    'onRecordEnd',
+                    'playVoice',
+                    'pauseVoice',
+                    'stopVoice',
+                    'uploadVoice',
+                    'downloadVoice',
+                    'chooseImage',
+                    'previewImage',
+                    'uploadImage',
+                    'downloadImage',
+                    'getNetworkType',
+                    'openLocation',
+                    'getLocation',
+                    'hideOptionMenu',
+                    'showOptionMenu',
+                    'closeWindow',
+                    'scanQRCode',
+                    'chooseWXPay',
+                    'openProductSpecificView',
+                    'addCard',
+                    'chooseCard',
+                    'openCard'
+                ]
+            });*/
+        }
+    });
+
     //参数设置
     //总题数
-    var totalQuestion=4;
+    var totalQuestion=10;
     //开始抽题
     $.ajax({
         url: "/core/getQuestionList.action",
@@ -45,7 +98,7 @@ $(function(){
         }
     });
 
-  //抽取10道题
+  //后一页
     $(".nextBtn").click(function(){
         event.preventDefault();
         var currentPageCount=parseInt($("#pageFlag").val());
@@ -63,6 +116,7 @@ $(function(){
         $("#"+nextPage).removeClass("hidden");
         $("#pageFlag").val(currentPageCount+1);
     });
+    //前一页
     $(".beforeBtn").click(function(){
         event.preventDefault();
         var currentPageCount=parseInt($("#pageFlag").val());
@@ -78,6 +132,23 @@ $(function(){
         else if(currentPageCount-1==1){
             $(".beforeBtn").addClass("hidden");
         }
+    });
+
+    //完成按钮
+    $(".completeBtn").click(function(){
+        event.preventDefault();
+        //获取答案
+        $.ajax({
+            url: "/core/saveQuestion.action",
+            type: "POST",
+            data: {total: totalQuestion},
+            success: function (result) {
+                window.location.href="/forward/complete.action?pageId="+result;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.readyState);
+            }
+        });
     });
 
 });
