@@ -28,6 +28,14 @@ public class ForwardController {
     public String toIndex(HttpSession session, HttpServletRequest request, HttpServletResponse response){
         return "index";
     }
+    @RequestMapping("/complete")
+    public String toComplete(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        return "complete";
+    }
+    @RequestMapping("/test")
+    public String toTest(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        return "test";
+    }
     @RequestMapping("/iecheck")
     public String toIndex(){
         return "iecheck";

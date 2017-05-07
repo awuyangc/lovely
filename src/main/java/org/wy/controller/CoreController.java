@@ -18,7 +18,7 @@ import java.util.List;
 public class CoreController {
     @Resource
     private CoreService coreService;
-    //注册用户
+    //抽取题目
     @RequestMapping(value="/getQuestionList")
     @ResponseBody
     public List<Question> register(HttpSession session, int total ) throws Exception{

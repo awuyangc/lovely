@@ -12,6 +12,7 @@ public class User {
     private String  user_name;
     private String  user_password;
     private String  user_nickname;
+    private String  user_phone;
     private String create_time;
     private String roles;
     private String head_img;
@@ -105,5 +106,13 @@ public class User {
 
     public void setUser_open_id(String user_open_id) {
         this.user_open_id = user_open_id;
+    }
+
+    public String getUser_phone() {
+        return user_phone;
+    }
+
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
     }
 }

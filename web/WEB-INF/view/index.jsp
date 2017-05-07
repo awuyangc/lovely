@@ -24,7 +24,7 @@
       <div class="row" style="padding-bottom:10px">
         <div class="col-xs-6 text-center divBefore"><a class="btn btn-default beforeBtn hidden"  href="#" role="button">上一页</a></div>
         <div class="col-xs-6 text-center divNext"><a class="btn btn-default nextBtn"  href="#" role="button">下一页</a></div>
-        <div class="col-xs-6 text-center divComplete hidden"><a class="btn btn-default"  href="#" role="button">完成</a></div>
+        <div class="col-xs-6 text-center divComplete hidden"><a class="btn btn-default completeBtn"  href="#" role="button">完成</a></div>
         <input id="pageFlag" type="hidden" value="1"/>
       </div>
     </div>
@@ -34,6 +34,7 @@
   <!--js区域-->
   <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script type="text/javascript" src="/js/index.js"></script>
   </body>
 </html>
