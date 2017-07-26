@@ -7,6 +7,7 @@ import java.util.List;
  * Created by wuyang on 2017/3/20.
  */
 public class User {
+    private String  id;
     private String  user_id;
     private String  user_open_id;
     private String  user_name;
@@ -19,7 +20,12 @@ public class User {
     private String sex;
     private String industry;
     private String introduce;
-
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getUser_id() {
         return user_id;
     }

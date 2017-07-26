@@ -95,4 +95,8 @@ public class WeiXinUtil {
         return APPID;
     }
 
+    public static String getAPPSECRET() {
+        return APPSECRET;
+    }
+
 }

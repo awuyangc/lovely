@@ -2,6 +2,8 @@
  * Created by Administrator on 2017/3/28.
  */
 $(function(){
+    $("#pageFlag").val("1");
+    FastClick.attach(document.body);
     var url= location.href.split('#')[0];
     $.ajax({
         url: "/wechat/JSSDK_Config.action",
@@ -9,7 +11,7 @@ $(function(){
         data: {url: url},
         success: function (result) {
             wx.config({
-                debug: true,
+                debug: false,
                 appId: result.appId,
                 timestamp: result.timestamp,
                 nonceStr: result.nonceStr,
@@ -36,8 +38,12 @@ $(function(){
         type: "POST",
         data: {total: totalQuestion},
         success: function (result) {
-            $(".pages").html("");
+
             var style="hidden";
+            //提升dom性能
+            $(".pages").css("display","none");
+            $(".pages").html("");
+            var pageHtml="";
             result.forEach(function(e,i){
                 if(i==0){
                    style="";
@@ -45,28 +51,32 @@ $(function(){
                 else{
                     style="hidden";
                 }
-                var pageHtml='<div class="page '+style+'" id="page'+(i+1)+'">' +
+                pageHtml +='<div class="page '+style+'" id="page'+(i+1)+'">' +
                     '<div class="container-fluid">' +
                     '<div class="row" style="padding-bottom:20px">' +
-                    '<div class="col-xs-12 text-center"><image src="files/'+e.imgUrl+'" data-question-id="'+e.id+'" class="img-thumbnail"></image></div>' +
+                    '<div class="col-xs-12 text-center"><image src="/files/'+e.imgUrl+'" id="image'+(i+1)+'" data-question-id="'+e.id+'" class="img-thumbnail"></image></div>' +
                     '</div>' +
                     '<div class="row" style="padding-bottom:20px">' +
-                    '<div class="col-xs-4"><input type="radio" name="radio'+(i+1)+'" value="A">'+e.chkA+'</div>' +
-                    '<div class="col-xs-4"><input type="radio" name="radio'+(i+1)+'" value="B">'+e.chkB+'</div>' +
-                    '<div class="col-xs-4"><input type="radio" name="radio'+(i+1)+'" value="C">'+e.chkB+'</div>' +
+                    '<div class="col-xs-4"><input type="radio" id="radio'+(i+1)+'A" name="radio'+(i+1)+'" value="A"><label for="radio'+(i+1)+'A">'+e.chkA+'</label></div>' +
+                    '<div class="col-xs-4"><input type="radio" id="radio'+(i+1)+'B" name="radio'+(i+1)+'" value="B"><label for="radio'+(i+1)+'B">'+e.chkB+'</label></div>' +
+                    '<div class="col-xs-4"><input type="radio" id="radio'+(i+1)+'C" name="radio'+(i+1)+'" value="C"><label for="radio'+(i+1)+'C">'+e.chkC+'</label></div>' +
                     '</div>' +
                     '<div class="row" style="padding-bottom:20px">' +
-                    '<div class="col-xs-4"><input type="radio" name="radio'+(i+1)+'" value="D">'+e.chkD+'</div>' +
-                    '<div class="col-xs-4"><input type="radio" name="radio'+(i+1)+'" value="E">'+e.chkE+'</div>' +
-                    '<div class="col-xs-4"><input type="radio" name="radio'+(i+1)+'" value="F">'+e.chkF+'</div>' +
+                    '<div class="col-xs-4"><input type="radio" id="radio'+(i+1)+'D" name="radio'+(i+1)+'" value="D"><label for="radio'+(i+1)+'D">'+e.chkD+'</label></div>' +
+                    '<div class="col-xs-4"><input type="radio" id="radio'+(i+1)+'E" name="radio'+(i+1)+'" value="E"><label for="radio'+(i+1)+'E">'+e.chkE+'</label></div>' +
+                    '<div class="col-xs-4"><input type="radio" id="radio'+(i+1)+'F" name="radio'+(i+1)+'" value="F"><label for="radio'+(i+1)+'F">'+e.chkF+'</label></div>' +
                     '</div>' +
+                    '<div class="row" style="">' +
+                    '<div class="navbar-fixed-bottom text-center">第 '+(i+1)+' 页，共 '+totalQuestion+' 页</div>'+
+                    '</div>'+
                     '</div>' +
                     '</div>';
-                $(".pages").append(pageHtml);
             })
+            $(".pages").append(pageHtml);
+            $(".pages").css("display","");
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert(XMLHttpRequest.readyState);
+            alert(XMLHttpRequest.readyState+"ajax错误");
         }
     });
 
@@ -74,6 +84,10 @@ $(function(){
     $(".nextBtn").click(function(){
         event.preventDefault();
         var currentPageCount=parseInt($("#pageFlag").val());
+        if($("input:radio[name='radio"+currentPageCount+"']:checked").val()==null){
+            alert("请选择！");
+            return false;
+        }
         var currentPage="page"+currentPageCount;
         var nextPage="page"+(currentPageCount+1);
         if(currentPageCount+1==totalQuestion) {
@@ -110,17 +124,39 @@ $(function(){
     $(".completeBtn").click(function(){
         event.preventDefault();
         //获取答案
+        var currentPageCount=parseInt($("#pageFlag").val());
+        if($("input:radio[name='radio"+currentPageCount+"']:checked").val()==null){
+            alert("请选择！");
+            return false;
+        }
+        var arrQuestion_id=[];
+        var arrUser_answer=[];
+        for(var i=1;i<=totalQuestion;i++){
+            arrQuestion_id.push($("#image"+i).data("question-id"));
+            arrUser_answer.push($("input[name='radio"+i+"']:checked").val());
+        }
         $.ajax({
-            url: "/core/saveQuestion.action",
+            url: "/core/saveUserQuestion.action",
             type: "POST",
-            data: {total: totalQuestion},
+            data: {question_id:arrQuestion_id.toString(),user_answer:arrUser_answer.toString()},
             success: function (result) {
-                window.location.href="/forward/complete.action?pageId="+result;
+                window.location.href="/forward/complete.action";
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert(XMLHttpRequest.readyState);
             }
         });
     });
-
+    function getRootPath_web() {
+        //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+        var curWwwPath = window.document.location.href;
+        //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+        var pathName = window.document.location.pathname;
+        var pos = curWwwPath.indexOf(pathName);
+        //获取主机地址，如： http://localhost:8083
+        var localhostPaht = curWwwPath.substring(0, pos);
+        //获取带"/"的项目名，如：/uimcardprj
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+        return (localhostPaht + projectName);
+    }
 });

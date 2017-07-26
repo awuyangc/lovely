@@ -1,5 +1,10 @@
 package org.wy.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 /**
  * Created by wuyang on 2017/5/4.
  */
@@ -14,6 +19,8 @@ public class Question {
     private String chkF;
     private String answer;
     private String isDelete;
+    private Date createtime;
+    private String flag;
 
     public String getId() {
         return id;
@@ -95,4 +102,19 @@ public class Question {
         this.isDelete = isDelete;
     }
 
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 }

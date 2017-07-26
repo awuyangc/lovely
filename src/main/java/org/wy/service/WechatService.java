@@ -1,11 +1,19 @@
 package org.wy.service;
 
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
+import org.wy.model.Oauth2Token;
+import org.wy.model.SNSUserInfo;
 import org.wy.model.TextMessage;
 import org.wy.util.MessageUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 import java.util.Map;
 
@@ -49,7 +57,7 @@ public class WechatService {
 
                 //自动回复
                 TextMessage text = new TextMessage();
-                text.setContent("awuyangc.xicp.net");
+                text.setContent("awuyangc.iask.in");
                 text.setToUserName(fromUserName);
                 text.setFromUserName(toUserName);
                 text.setCreateTime(new Date().getTime() + "");
@@ -132,8 +140,68 @@ public class WechatService {
         return respMessage;
     }
 
-    /**
-     * 获取access_token
-     */
+    public Oauth2Token getOauth2AccessToken(String appId, String appSecret, String code) {
+        Oauth2Token ot = null;
+        String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
+        requestUrl = requestUrl.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
+        System.out.println("requestUrl:"+requestUrl);
+        //获取网页授权凭证
+        try {
+            URL getUrl=new URL(requestUrl);
+            HttpURLConnection http=(HttpURLConnection)getUrl.openConnection();
+            http.setRequestMethod("GET");
+            http.setRequestProperty("Content-Type",
+                    "application/x-www-form-urlencoded");
+            http.setDoOutput(true);
+            http.setDoInput(true);
+            http.connect();
+            InputStream is = http.getInputStream();
+            int size = is.available();
+            byte[] b = new byte[size];
+            is.read(b);
+            String message = new String(b, "UTF-8");
+            JSONObject jsonObject = JSONObject.parseObject(message);
+            ot = new Oauth2Token();
+            ot.setAccessToken(jsonObject.getString("access_token"));
+            ot.setExpiresIn(jsonObject.getInteger("expires_in"));
+            ot.setRefreshToken(jsonObject.getString("refresh_token"));
+            ot.setOpenId(jsonObject.getString("openid"));
+            ot.setScope(jsonObject.getString("scope"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ot;
+    }
+
+    public SNSUserInfo getSNSUserInfo(String accessToken, String openId) {
+        SNSUserInfo suser = null;
+        String requestUrl = "https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
+        requestUrl = requestUrl.replace("ACCESS_TOKEN", accessToken).replace("OPENID", openId);
+        //通过网页授权获取用户信息
+        try {
+            URL getUrl=new URL(requestUrl);
+            HttpURLConnection http=(HttpURLConnection)getUrl.openConnection();
+            http.setRequestMethod("GET");
+            http.setRequestProperty("Content-Type",
+                    "application/x-www-form-urlencoded");
+            http.setDoOutput(true);
+            http.setDoInput(true);
+            http.connect();
+            InputStream is = http.getInputStream();
+            int size = is.available();
+            byte[] b = new byte[size];
+            is.read(b);
+            String message = new String(b, "UTF-8");
+            suser = JSONObject.parseObject(message,SNSUserInfo.class);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return suser;
+    }
+
 
 }

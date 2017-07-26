@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.wy.model.AccessToken;
-import org.wy.model.JSSDK;
-import org.wy.model.JSTicket;
+import org.wy.model.*;
 import org.wy.service.WechatService;
 import org.wy.util.MD5Util;
 import org.wy.util.SHA1;
@@ -93,9 +91,9 @@ public class WechatController {
     @ResponseBody
     public JSSDK JSSDK_Config(HttpServletRequest request, String url) {
         AccessToken accessToken=AccessToken.getInstance();
-        System.out.println("jssdk验证：accessToken："+accessToken.getToken());
+        System.out.println("缓存获取js的accesstoken：accessToken："+accessToken.getToken());
         JSTicket jsTicket=JSTicket.getInstance();
-        System.out.println("jssdk验证：jsTicket："+jsTicket.getTicket());
+        System.out.println("缓存获取jsTicket："+jsTicket.getTicket());
         String noncestr =  getNonceStr();
         String timestamp =  getTimeStamp();
         String[] paramArr = new String[] { "jsapi_ticket=" + jsTicket.getTicket(),
@@ -112,6 +110,41 @@ public class WechatController {
         jssdk.setSignature(sign);
         return jssdk;
     }
+
+    @RequestMapping("/loginWx")
+    public String loginWx(HttpServletRequest request, HttpServletResponse response) {
+        String redirect_uris="http://awuyangc.iask.in/wechat/oauth.action";
+        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+WeiXinUtil.getAPPID()+"&redirect_uri="+redirect_uris+"&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect";
+        //snsapi_userinfo
+        //snsapi_base
+        System.out.println(url);
+        return "redirect:"+url;
+    }
+
+    //进行签名
+    @RequestMapping("/oauth")
+    public String oauth(HttpServletRequest request, HttpServletResponse response, String url) {
+        //用户同意授权后可以获得code
+        String code = request.getParameter("code");
+        //用户同意授权
+        if(!"authdeny".equals(code)){
+            //获取网页授权access_token
+            Oauth2Token oauth2Token = wechatService.getOauth2AccessToken(WeiXinUtil.getAPPID(), WeiXinUtil.getAPPSECRET(), code);
+            //获取用户信息
+            SNSUserInfo suser = wechatService.getSNSUserInfo(oauth2Token.getAccessToken(), oauth2Token.getOpenId());
+            if(suser!=null){
+                //设置session
+                request.getSession().setAttribute("suser",suser);
+            }
+        }
+        //
+        return "redirect:/forward/index.action"; //转发到指定的url
+    }
+
+
+
+
+
 
     private String getNonceStr() {
         Random random = new Random();

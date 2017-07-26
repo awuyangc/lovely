@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>浏览器版本过低</title>
-    <link href="/css/iecheck.css" rel="stylesheet">
+    <link href="/css/system/iecheck.css" rel="stylesheet">
 </head>
 <body>
 <div class="inner">
